@@ -6,7 +6,7 @@
   compile: gcc unique_str.c -o unique_str
   run: ./unique_str fuck
     fuck is unique
-  run: ./unique_str fuck
+  run: ./unique_str fucf
     fucf is not unique
 */
 
