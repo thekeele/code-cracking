@@ -38,24 +38,38 @@ bool unique_no_ds(int str_length, char str[])
 {
     bool isUnique = true;
 
-    // do da thang
-
+    for (int i = 0; i < str_length; i++) {
+        for (int j = 0; j < str_length; j++) {
+            if ((i != j) && (str[i] == str[j])) {
+                isUnique = false;
+            }
+        }
+    }
     return isUnique;
 }
 
 int main(int argc, char *argv[])
 {
     if (argc < 2) {
-      printf("%s\n", "There doesn't seem to be anything here.");
-      return 0;
+        printf("%s\n", "There doesn't seem to be anything here.");
+        return 0;
     }
 
-    int result = unique_add_ds(strlen(argv[1]), argv[1]);
+    int result_add = unique_add_ds(strlen(argv[1]), argv[1]);
 
+    printf("%s\n", "Using additional data structures");
     printf("%s "
            "is %s\n",
            argv[1],
-           (result == 1) ? "unique" : "not unique");
+           (result_add == 1) ? "unique" : "not unique");
+
+    int result_no = unique_no_ds(strlen(argv[1]), argv[1]);
+
+    printf("\n%s\n", "Without additional data structures");
+    printf("%s "
+           "is %s\n",
+           argv[1],
+           (result_no == 1) ? "unique" : "not unique");
 
     return 0;
 }
