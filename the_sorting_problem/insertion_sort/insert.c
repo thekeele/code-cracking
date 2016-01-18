@@ -1,17 +1,8 @@
 #include <stdio.h>
 
-int main (int argc, char *argv[]) {
-
-    printf("%s\n", "In-Place Insertion Sort");
-
+void InsertionSort (int a[], int n)
+{
     int cur, prev;
-    int a[] = {5, 2, 4, 6, 1, 3};
-    int n = (sizeof(a) / sizeof(int)); // sizeof returns # of bytes / by type to get count
-
-    printf("%s", "Pre Sort: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", a[i]);
-    }
 
     // Σ from i = 1 to n
     // Ti = # of times the while loop is executed for a given i
@@ -41,6 +32,21 @@ int main (int argc, char *argv[]) {
       Average Case: must search half of array
       same as worse case but cost(constants) will change
     */
+}
+
+int main (int argc, char *argv[]) {
+
+    printf("%s\n", "In-Place Insertion Sort");
+
+    int a[] = {5, 2, 4, 6, 1, 3};
+    int n = (sizeof(a) / sizeof(int)); // sizeof returns # of bytes / by type to get count
+
+    printf("%s", "Pre Sort: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", a[i]);
+    }
+
+    InsertionSort(a, n);
 
     printf("\n%s", "Post Sort: ");
     for (int i = 0; i < n; i++) {
