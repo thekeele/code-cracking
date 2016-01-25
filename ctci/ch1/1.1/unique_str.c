@@ -1,6 +1,6 @@
-#include "stdio.h" // for all
-#include "stdbool.h" // for bool
-#include "string.h" // for strlen
+#include <stdio.h> // for all
+#include <stdbool.h> // for bool
+#include <string.h> // for strlen
 
 /*
   compile: gcc unique_str.c -o unique_str

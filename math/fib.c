@@ -1,5 +1,5 @@
-#include "stdio.h"
-#include "stdlib.h" // for atoi
+#include <stdio.h>
+#include <stdlib.h> // for atoi
 
 int fib(int n)
 {
