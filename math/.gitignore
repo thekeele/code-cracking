@@ -1,2 +1,4 @@
 find_sum
 fib
+fact_rec
+fact_iter
