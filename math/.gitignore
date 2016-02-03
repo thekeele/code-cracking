@@ -2,3 +2,5 @@ find_sum
 fib
 fact_rec
 fact_iter
+fact_ass.o
+fact_ass
