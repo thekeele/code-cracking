@@ -1,50 +1,50 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h> // for atoi
 
 
 /* Create a program that executes a factorial function iteratively */
 
 
-int compute_factorial( int argc )
+long long compute_factorial( long long n )
 {
-    int sum = 1;
-    int n = 1;
-    int x = 1;
-
-    /*
-      printf("%s\n", "initial value of n: ");
-      printf("%d\n", n);
-      printf("%s\n", "initial value of x: ");
-      printf("%d\n", x);
-    */
-
-     while( x <= argc ) {
-         sum = ( sum * x );
-        /*
-          printf("%s", "sum value: ");
-          printf("%d\n", sum);
-          printf("%s", "x value: ");
-          printf("%d\n", x);
-        */
-        x = (x + 1);
+    long long sum = 1;
+    long long x = 1;
+      
+    while( x <= n ) {
+      sum = ( sum * x );
+      /*
+      printf("%s", "sum value: ");
+      printf("%lld\n", sum);
+      printf("%s", "x value: ");
+      printf("%lld\n", x);
+      */
+      x += 1;
     }
 
     return sum;
 }
-
-
 
 int main( int argc, char *argv[] )
 {
     /*
      * Take input for the coefficient of the factorial function !
     */
+//    long long x = 0;
 
-    int x = 0;
+//    printf("What number do you want to factorialize, you sick fuck? ");
+//    fscanf(stdin, "%lld", &x);
 
-    printf("What number do you want to factorialize, you sick fuck? ");
-    fscanf(stdin, "%d", &x);
+//    printf("%s\n", "Ok, then, running factorial operation...");
+//    printf( "Factorial of %lld is -> %lld\n", x, compute_factorial(x)); 
 
-    printf("%s\n", "Ok, then, running factorial operation...");
-    printf( "Factorial of %d is -> %d\n", x, compute_factorial(x));
+  if (argc == 2) {
+    printf("fact of %s", argv[1]);
+    long long n = atoi(argv[1]);
+    long long result = compute_factorial(n);
+    printf(" -> %lld\n", result);
+  }
+  else {
+    printf("%s\n", "Please supply one integer");
+  }
 }
