@@ -1,11 +1,14 @@
-# global var
+# var
 parent = "I'm the parent scope"
+# instance var
+@parent = "I'm an instance variable"
 
 # function definition
 def function_scope
   # local var
   child = "I'm the child scope"
   # puts parent # undefined local variable or method `parent'
+  puts @parent
   puts child
 end
 
@@ -23,7 +26,9 @@ stuff = ['all', 'my', 'junk']
 stuff.each do |item|
   puts item
   puts parent
+  puts @parent
   # puts child # undefined local variable or method `child'
 end
 
 # puts item # undefined local variable or method `item'
+puts @parent
