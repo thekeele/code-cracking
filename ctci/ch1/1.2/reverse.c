@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
   Reverse C-style str, aka a str that ends with a null character
@@ -14,7 +15,7 @@
 
 void array_reverse()
 {
-    char str[] = "nathan_needs_sleep";
+    char str[] = "fuckboy_swag";
     int n = ((sizeof(str) / sizeof(char)) - 1);
     char tmp;
 
@@ -31,36 +32,59 @@ void array_reverse()
 
 void ptr_reverse(char *str)
 {
-    printf("original: %s\n", str);
+    printf("str: %s\n", str);
+    printf("*str: %c\n", *str);
+
     char *end = str;
     char tmp;
 
-    while (*end) {
+    while (*end != '\0') {
         end++;
     }
     end--;
 
+    printf("%s\n", "Found end of string");
+    printf("end: %s\n", end);
+    printf("*end: %c\n", *end);
+
+    printf("%s\n", "Starting while loop with swapping");
     while (str <= end) {
         tmp = *str;
         printf("tmp: %c\n", tmp);
+
         *str = *end;
-        printf("str: %c\n", *str);
+        printf("*str: %c\n", *str);
+
         *end = tmp;
-        printf("end: %c\n", *end);
+        printf("*end: %c\n", *end);
 
         str++;
+        printf("str: %s\n", str);
+
         end--;
+        printf("end: %s\n", end);
+        printf("%s\n\n", "space");
     }
-    printf("reverse: %s\n", end);
+
+    str++;
+    end--;
+
+    printf("%s\n", "Results");
+    printf("str: %s\n", str);
+    printf("*str: %c\n", *str);
+
+    printf("end: %s\n", end);
+    printf("*end: %c\n", *end);
 }
 
 int main(int argc, char const *argv[])
 {
-    char str[] = "ctci_sucks";
-
     printf("%s\n", "Array String Reverse");
     array_reverse();
 
+    // char *str = "fuck" is a Read-Only string
+    // therefore seg faults happen on write
+    char str[] = "fuckboy_swag";
     printf("\n%s\n", "Pointer String Reverse");
     ptr_reverse(str);
 
