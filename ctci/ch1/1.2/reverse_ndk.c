@@ -4,30 +4,55 @@
 
 
 
-void inplace_reverse ( char *str ) {
+void inplace_reverse ( /* char str[] */ ) {
 
-  char *end = str;
   //temporary strorage var
-  char box; 
+  char tmp = 'X'; 
 
-  int n = ( sizeof(A) / sizeof(char) ) - 1 ;
-  n = ( n / 2 );
+  char str[] = "CODE";
 
+  printf("Value of 'str':%s\n\n", str);
+  //printf("Value of '&str':%s\n\n", &str);
 
-  //Get the end of the input string
-  for( char *i = str; *i; i++ ) {
-    ++end;
-    printf("The is 'end': %s\n", end);
+  int n = ( sizeof(str) / sizeof(char) - 1);
+  //n = ( n / 2 );
+
+  printf("n: %d\n\n", n);
+
+/*  interate through string with int point "i"
+  //printf("The is final 'end': %s\n\n", end);
+  for( int i = 0; i < n; i++ ) {
+    printf("tmp: %c\n", tmp);
+    printf("str[i]: %s\n\n", str);
+    printf("str[(n-i)]: %c\n\n", str[(n-i)]);
+    tmp = str[(n-1)-i]; //backup the char that will be replaced
+    str[(n-1)-i] = str[i];
   }
-  //Move your index back once, to avoid the EOS character
-  --end;
 
-  printf("The is final 'end': %s\n", end);
+*/
 
-  for( int i = 0; i <= n; i++ ) {
+  for( char *i = str; *i; i++ ) {
 
+    printf("Traverse loop content: %c\n", *i);
+    //tmp = str[(n-1)-i]; //backup the char that will be replaced
+    tmp = *i;
+    *str = str[(n-1)];
+    //str[n-1] = *i;
     
   }
+
+
+
+/*
+  while( str < end ) {
+    tmp = *str;
+    *str++ = *end;
+    *end-- = tmp;
+  }
+  */
+
+  printf("String after reversal: %s\n", str);
+
 
 }
 
@@ -55,9 +80,11 @@ int main( void ) {
   
 */
 
-  char str[] = "CODE";
+  char str[] = { 'C', 'O', 'D', 'E' };
 
-  inplace_reverse(str);
+  inplace_reverse(/* str */ );
+
+  //printf("String after reversal: %s\n", str);
 
   return 0;
 }
