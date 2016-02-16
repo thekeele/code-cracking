@@ -15,6 +15,26 @@
 
 void array_reverse()
 {
+  char A[] = "Yeah, Wow"; 
+  
+  int n = ( sizeof(A) / sizeof(char) ) - 1;
+
+  char B[n];
+  
+  
+  for ( int i = 0; i < n; i++ ) {
+
+    B[i] = A[(n-1)-i];
+  }
+  
+  B[n] = '\0';
+
+  printf("original: %s - size: %d\n", A, n);
+  printf("reverse: %s - size: %d\n", B, n);
+}
+
+void inplace_reverse()
+{
     char str[] = "fuckboy_swag";
     int n = ((sizeof(str) / sizeof(char)) - 1);
     char tmp;
@@ -32,61 +52,89 @@ void array_reverse()
 
 void ptr_reverse(char *str)
 {
+  /*
+    //DEBUG PRINT BLOCK
     printf("str: %s\n", str);
     printf("*str: %c\n", *str);
+  */
+
 
     char *end = str;
     char tmp;
 
     while (*end != '\0') {
-        end++;
+        ++end;
     }
-    end--;
+    --end;
 
-    printf("%s\n", "Found end of string");
-    printf("end: %s\n", end);
-    printf("*end: %c\n", *end);
+    /*
+      //DEBUG PRINT BLOCK 
+      printf("%s\n", "Found end of string");
+      printf("end: %s\n", end);
+      printf("*end: %c\n", *end);
+    */
 
-    printf("%s\n", "Starting while loop with swapping");
+    //DEBUG PRINT
+    //printf("%s\n", "Starting while loop with swapping");
+
     while (str <= end) {
         tmp = *str;
-        printf("tmp: %c\n", tmp);
+        //DEBUG PRINT
+        //printf("tmp: %c\n", tmp);
 
         *str = *end;
-        printf("*str: %c\n", *str);
+        //DEBUG PRINT
+        //printf("*str: %c\n", *str);
 
         *end = tmp;
-        printf("*end: %c\n", *end);
+        //DEBUG PRINT
+        //printf("*end: %c\n", *end);
 
         str++;
-        printf("str: %s\n", str);
+        //DEBUG PRINT
+        //printf("str: %s\n", str);
 
         end--;
-        printf("end: %s\n", end);
-        printf("%s\n\n", "space");
+        //DEBUG PRINT
+        //printf("end: %s\n", end);
+        //printf("%s\n\n", "space");
     }
 
-    str++;
-    end--;
+    /*
 
-    printf("%s\n", "Results");
-    printf("str: %s\n", str);
-    printf("*str: %c\n", *str);
+      //DEBUG PRINT BLOCK
+      printf("%s\n", "Results");
+      printf("str: %s\n", str);
+      printf("*str: %c\n", *str);
 
-    printf("end: %s\n", end);
-    printf("*end: %c\n", *end);
+      printf("end: %s\n", end);
+      printf("*end: %c\n", *end);
+
+    */
 }
 
 int main(int argc, char const *argv[])
 {
-    printf("%s\n", "Array String Reverse");
-    array_reverse();
+//    printf("%s\n", "Array String Reverse");
+//    array_reverse();
 
+//    printf("%s\n", "Inplace String Reverse");
+//    inplace_reverse();
     // char *str = "fuck" is a Read-Only string
-    // therefore seg faults happen on write
-    char str[] = "fuckboy_swag";
-    printf("\n%s\n", "Pointer String Reverse");
+    // therefore Bus Error happens on write
+    //char str[] = "fuck";
+    char str[] = "CODE";
+    //DEBUG PRINT
+    //printf("\n%s\n", "Pointer String Reverse");
+
+    //PRINT OUT THE STRING **BEFORE** IT HAS BEEN REVERSED!
+    printf("String **before** reverse: %s\n", str);
+
+    //REVERSE THE STRING HERE....
     ptr_reverse(str);
+
+    //PRINT OUT THE STRING AFTER IT HAS BEEN REVERSED!!!!
+    printf("String after reverse: %s\n", str);
 
     return 0;
 }
