@@ -46,9 +46,15 @@ def partition(array, p, r)
   return (i + 1)
 end
 
+puts "\n"
 def quicksort(array, p, r)
   if p < r
     q = partition(array, p, r)
+    print "value of q: #{q} lower -> "
+    print array[p..q - 1]
+    print " upper -> "
+    print array[q + 1..r]
+    puts "\n"
     quicksort(array, p, q - 1)
     quicksort(array, q + 1, r)
   end
