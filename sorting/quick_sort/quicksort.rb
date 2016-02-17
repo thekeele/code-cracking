@@ -23,7 +23,7 @@
 # Ruby Swap
 #  x, y = y, x
 
-array = [2, 3, 1, 5, 4]
+array = [1, 1, 1, 1, 1]
 n = array.length
 
 puts "Length: #{n}"
@@ -34,7 +34,7 @@ def partition(array, p, r)
   i = p - 1
   j = p
 
-  while array[j] < array[r - 1]
+  while array[j] < array[r]
     if array[j] <= x
       i = i + 1
       array[i], array[j] = array[j], array[i]
