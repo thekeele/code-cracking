@@ -3,137 +3,90 @@
 #include <time.h>
 
 
-int main(int argc, char *argv[]) {
-
-
+int main(int argc, char *argv[])
+{
   srand ( time(NULL) ); //Seed for generating random integers
 
-  int randnum = 0;
-  int runtimes = 0;
+  int runtimes = 8;
   int percent_A = 25;
   int percent_T = 25;
   int percent_C = 25;
   int percent_G = 25;
-
   int randX = 0;
 
-  char *random_bases; // Could I shove all of the randomly generated chars into one long char pointer, then print?
-
-  char randchar = ( rand() % 26) + 1;
-
-  // Set of possible bases 
+  // Set of possible bases
   const int N = 4;
   char set[N] = {'A', 'T', 'C', 'G'};
 
-/*
-  randnum = rand();
-  //randchar = (randnum % 26) + 1;
-  //randchar = randchar + 97;
-  //letter = (char) randchar;
+  // Could I shove all of the randomly generated chars into one long char pointer, then print?
+  // you would have to know the number of chars you will generate and use that when you
+  // declare the variable, probably better to write to a file
+  // char *random_bases;
+  char random_bases[runtimes];
 
-  int percent_A = 25;
-  int percent_T = 25;
-  int percent_C = 25;
-  int percent_G = 25;
+  // rand() returns an int, initialize logic is bad
+  // char randchar = ( rand() % 26) + 1;
+  char randchar;
 
-  randX = ( rand() % 100 )
-  
-  switch( randX ) {
 
-    case( randX >= A0 && randX < A1 ):
-      
-      break;
+  // Ask for runtimes first, as each percent will be based on runtimes
+  // runtimes = 8, percent_A = 25% -> runtimes * percent_A(.25) = 2
+  // so the range for 2 would be 0 - 1
 
-    case( randX >= T0 && randX < T1 ):
+  // printf("How many times??? ");
+  // fscanf(stdin, "%d", &runtimes);
 
-      break;
+  // printf("Please input percentage of A: ");
+  // fscanf(stdin, "%d", &percent_A);
 
-    case( randX >= C0 && randX < C1 ):
+  // printf("Please input percentage of T: ");
+  // fscanf(stdin, "%d", &percent_T);
 
-      break;
+  // printf("Please input percentage of C: ");
+  // fscanf(stdin, "%d", &percent_C);
 
-    case( randX >= G0 && randX < G1 ):
+  // printf("Please input percentage of G: ");
+  // fscanf(stdin, "%d", &percent_G);
 
-      break;
-  }
-*/
-
-  //Take input from the user: 
-  printf("Please input percentage of A: ");
-  fscanf(stdin, "%d", &percent_A);
-
-  printf("Please input percentage of T: ");
-  fscanf(stdin, "%d", &percent_T);
-  
-  printf("Please input percentage of C: ");
-  fscanf(stdin, "%d", &percent_C);
-  
-  printf("Please input percentage of G: ");
-  fscanf(stdin, "%d", &percent_G);
-  
-  printf("How many times??? ");
-  fscanf(stdin, "%d", &runtimes);
-
+  // calculate max based on above math
   int A_min = 0;
-  int A_max = percent_A;
+  int A_max = 1;
   int T_min = A_max + 1;
-  int T_max = A_max + percent_T;
+  int T_max = 3;
   int C_min = T_max + 1;
-  int C_max = T_max + percent_C;
+  int C_max = 5;
   int G_min = C_max + 1;
-  int G_max = C_max + percent_G;
+  int G_max = 7;
 
-  for( int i = runtimes; 0 < i; i--) {
-  
-    //random_bases = set[rand()%N]; // rand()%N is within bounds of array
-  
-    //printf("%c", set[rand()%N]);
+  for( int i = 0; i < runtimes; i++) {
 
-    randX = ( rand() % 100 );
+    randX = ( rand() % runtimes );  // range: 0 to runtimes -> 0 to 7
 
-    /*
-      //Cannot use switch statement because "randX" must be const int ????  
-      switch( randX ) {
-
-        case( randX >= A_min && randX < A_max ):
-          randchar = 'A';
-          break;
-
-        case( randX >= T_min && randX < T_max ):
-          randchar = 'T';
-          break;
-
-        case( randX >= C_min && randX < C_max ):
-          randchar = 'C';
-          break;
-
-        case( randX >= G_min && randX < G_max ):
-          randchar = 'G';
-          break;
-        }
-      */
-
-    //Next try... if statements...
-    if (randX >= A_min && randX < A_max) {
-      randchar = 'A';
+    if (randX >= A_min && randX <= A_max) {
+      randchar = set[0];
     }
-    else if (randX >= T_min && randX < T_max) {
-      randchar = 'T';
+    else if (randX >= T_min && randX <= T_max) {
+      randchar = set[1];
     }
-    else if (randX >= C_min && randX < C_max) {
-      randchar = 'C';
+    else if (randX >= C_min && randX <= C_max) {
+      randchar = set[2];
     }
-    else if (randX >= G_min && randX < G_max) {
-      randchar = 'G';
+    else if (randX >= G_min && randX <= G_max) {
+      randchar = set[3];
+    } else {
+      // incase rand() fucks up
+      break;
     }
+    printf("int: %d -> generates: %c\n", randX, randchar);
 
+    random_bases[i] = randchar;
+  }
 
-    printf("%c", randchar);
+  printf("\nAnd the bases are: ");
+  for (int i = 0; i < runtimes; i++) {
+    printf("%c ", random_bases[i]);
   }
 
   printf("\n");
-  //printf("%s\n", random_bases);
-
   return 0;
-
 }
