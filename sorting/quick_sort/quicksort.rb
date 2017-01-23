@@ -23,22 +23,17 @@
 # Ruby Swap
 #  x, y = y, x
 
-array = [1, 1, 1, 1, 1]
-n = array.length
-
-puts "Length: #{n}"
-print "Pre-Sort: #{array}"
-
 def partition(array, p, r)
   x = array[r]
   i = p - 1
   j = p
 
-  while array[j] < array[r]
+  while j < r
     if array[j] <= x
       i = i + 1
       array[i], array[j] = array[j], array[i]
     end
+    j = j + 1
   end
 
   array[i + 1], array[r] = array[r], array[i + 1]
@@ -46,23 +41,19 @@ def partition(array, p, r)
   return (i + 1)
 end
 
-puts "\n"
 def quicksort(array, p, r)
   if p < r
     q = partition(array, p, r)
-    print "value of q: #{q} lower -> "
-    print array[p..q - 1]
-    print " upper -> "
-    print array[q + 1..r]
-    puts "\n"
     quicksort(array, p, q - 1)
     quicksort(array, q + 1, r)
   end
 end
 
-quicksort(array, 0, n - 1)
+array = [5, 4, 3, 2, 1]
+n = array.length
 
-puts "\nLength: #{array.length}"
+print "Pre-Sort: #{array}\n"
+quicksort(array, 0, n - 1)
 print "Post-Sort: #{array}"
 puts "\n"
 
